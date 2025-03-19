@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier File Organizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>PDF Excel Organizer</h1>
+    <form method="POST">
+        <div>
+            <label for="folder_path">Enter Folder Path (containing Excel and PDF files):</label>
+            <input type="text" name="folder_path" id="folder_path" placeholder="e.g., C:\Users\LENOVO\Desktop\Diagrams_Supplier" required>
+            <p>Tip: Paste the full path to your folder with Excel sheets and PDFs.</p>
+        </div>
+        <button type="submit">Organize Files</button>
+    </form>
+</body>
+</html>
