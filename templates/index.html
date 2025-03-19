@@ -6,23 +6,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>PDF Excel Organizer</h1>
+    <h1>Supplier File Organizer</h1>
     <form method="POST" enctype="multipart/form-data">
         <div>
-            <label for="folderInput">Select a Folder (containing Excel and PDF files):</label>
-            <input type="file" id="folderInput" webkitdirectory directory multiple required>
-            <p>Tip: Select a folder with Excel sheets and PDFs.</p>
+            <label for="excel_files">Upload Excel Files (one per supplier):</label>
+            <input type="file" name="excel_files" multiple accept=".xlsx,.xls">
+            <p>Tip: Hold Ctrl (Windows) or Cmd (Mac) to select multiple files.</p>
+        </div>
+        <div>
+            <label for="pdf_files">Upload PDF Files:</label>
+            <input type="file" name="pdf_files" multiple accept=".pdf">
         </div>
         <button type="submit">Organize Files</button>
     </form>
-
-    <script>
-        document.getElementById('folderInput').addEventListener('change', function(event) {
-            let files = event.target.files;
-            if (files.length > 0) {
-                console.log("Selected folder:", files[0].webkitRelativePath);
-            }
-        });
-    </script>
 </body>
 </html>
