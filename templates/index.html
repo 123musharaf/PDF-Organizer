@@ -7,13 +7,22 @@
 </head>
 <body>
     <h1>PDF Excel Organizer</h1>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div>
-            <label for="folder_path">Enter Folder Path (containing Excel and PDF files):</label>
-            <input type="text" name="folder_path" id="folder_path" placeholder="e.g., C:\Users\LENOVO\Desktop\Diagrams_Supplier" required>
-            <p>Tip: Paste the full path to your folder with Excel sheets and PDFs.</p>
+            <label for="folderInput">Select a Folder (containing Excel and PDF files):</label>
+            <input type="file" id="folderInput" webkitdirectory directory multiple required>
+            <p>Tip: Select a folder with Excel sheets and PDFs.</p>
         </div>
         <button type="submit">Organize Files</button>
     </form>
+
+    <script>
+        document.getElementById('folderInput').addEventListener('change', function(event) {
+            let files = event.target.files;
+            if (files.length > 0) {
+                console.log("Selected folder:", files[0].webkitRelativePath);
+            }
+        });
+    </script>
 </body>
 </html>
