@@ -9,7 +9,7 @@
     <h1>Supplier File Organizer</h1>
     <form method="POST" enctype="multipart/form-data">
         <div>
-            <label for="excel_files">Upload Excel Files (one per supplier):</label>
+            <label for="excel_files">Upload Excel Files (one or more):</label>
             <input type="file" name="excel_files" multiple accept=".xlsx,.xls">
             <p>Tip: Hold Ctrl (Windows) or Cmd (Mac) to select multiple files.</p>
         </div>
@@ -19,5 +19,25 @@
         </div>
         <button type="submit">Organize Files</button>
     </form>
+
+    {% if unmatched_pdfs %}
+    <div>
+        <h3>PDFs not matched with any Part Description:</h3>
+        <ul>
+            {% for pdf in unmatched_pdfs %}
+                <li>{{ pdf }}.pdf</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if download_link %}
+    <div>
+        <a href="{{ download_link }}">Download Organized Zip</a>
+    </div>
+    {% endif %}
 </body>
 </html>
+
+
+
